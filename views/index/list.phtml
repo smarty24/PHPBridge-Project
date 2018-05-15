@@ -22,17 +22,21 @@ foreach( $topics as $topic ) {
                             <strong><?=(isset($topic['count'])) ? $topic['count'] : 0; ?></strong>
                         </span>
                     </a>
-                    <a href="/vote/add/<?=$topic['id']; ?>" class="btn btn-danger">
+                    <a href="/vote/remove/<?=$topic['id']; ?>" class="btn btn-danger">
                         <span class="glyphicon glyphicon-thumbs-down">
                             <strong><?=(isset($topic['count'])) ? $topic['count'] : 0; ?></strong>
                         </span>
                     </a>
                     <a href="/topic/edit/<?= $topic['id']; ?>" class="btn btn-primary">
-                        <span class="glyphicon glyphicon-edit">Edit</span>
+                        <span class="glyphicon glyphicon-edit"></span>
+                        Edit
                     </a>
                     <a href="/topic/delete/<?= $topic['id']; ?>" class="btn btn-danger" data-container="body"
                        data-toggle="popover" data-trigger="hover" data-placement="top" data-title="Are you sure?"
-                       data-centent=" This cannot be undone!"><span class="glyphicon glyphicon-remove" ></span>Delete</a>
+                       data-centent=" This cannot be undone!">
+                    <span class="glyphicon glyphicon-remove" ></span>
+                       Delete
+                    </a>
                 </p>
             </div>
         </div>
