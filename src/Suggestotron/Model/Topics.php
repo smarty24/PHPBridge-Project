@@ -37,7 +37,7 @@ class Topics {
         $data = [':id' => $id];
 
         $query = \Suggestotron\Db::getInstance()->prepare($sql);
-        $query->execute($data);
+        $query->execute($data); 
     }
 
     public function getTopic($id) {

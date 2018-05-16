@@ -1,18 +1,27 @@
 <?php
 $topic = $this->topic;
 ?>
-<h2>Edit Topic</h2>
-<form method="POST" action="/topic/edit">
-    <label>
-        Topic: <input type="text" name="title" value="<?= $topic['title']; ?>">
-    </label>
-    <br>
-    <label>
-        Description:
-        <br>
-        <textarea name="description" cols="50" rows="20"><?= $topic['description']; ?></textarea>
-    </label>
-    <br>
-    <input name="id" type="hidden" value="<?= $topic['id']; ?> ">
-    <input type="submit" class="btn btn-primary" value="Edit">
-</form>
+<div class="container">
+    <div class="jumbotron well">
+        <h2>Edit Topic</h2>
+        <form method="POST" action="/topic/edit">
+            <span class="rowMargin">
+                 <label class="labelLength" for="title">
+                    Topic:
+                </label>
+                <input type="text" name="title" id="title" value="<?= $topic['title']; ?>" size="51">
+            </span>
+            <br>
+            <span class="rowMargin">
+                <label class="labelLength" for="description">
+                    Description:
+                </label>
+            <textarea name="description" id="description" cols="50" rows="20"><?= $topic['description']; ?></textarea>
+            </span>
+            <br>
+            <input name="id" type="hidden" value="<?= $topic['id']; ?> ">
+            <input type="submit" class="btn btn-primary" value="Edit">
+        </form>
+    </div>
+</div>
+

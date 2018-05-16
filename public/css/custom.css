@@ -1,0 +1,14 @@
+.labelLength {
+	width: 100px;
+	display: inline-block;
+	border: 0px ridge black;
+	height: auto;
+	padding: 3px;
+	vertical-align: top;
+	text-align: right;
+}
+.rowMargin {
+	margin: 5px 0px 5px 0px;
+	border: 0px solid black;
+	display: inline-block;
+}

@@ -32,20 +32,21 @@ class Topics extends \Suggestotron\Controller {
                 header("location: /");
                 exit;
             } else {
-                echo "An error occurred";
+                //echo "An error occurred";
+                $this->render("errors/index.phtml", ["message" => "Update failed!"]);
                 exit;
             }
         }
 
         if ( !isset($options['id']) || empty($options['id']) ) {
-            echo "You did not pass in an ID";
+            $this->render("errors/index.phtml", ["message" => "No ID was found."]);
             exit;
         }
 
         $topic = $this->data->getTopic($options['id']);
 
         if ( $topic === false ){
-            echo "Topic not found!";
+            $this->render("errors/index.phtml", ["message" => "Topic not found"]);
             exit;
         }
 
@@ -54,14 +55,14 @@ class Topics extends \Suggestotron\Controller {
 
     public function deleteAction($options) {
         if ( !isset($options['id']) || empty($options['id']) ) {
-            echo "You did not pass in an ID";
+            $this->render("errors/index.phtml", ["message" => "No ID was found!"]);
             exit;
         }
 
         $topic = $this->data->getTopic($options['id']);
 
         if ( $topic === false ){
-            echo "Topic not found!";
+            $this->render("errors/index.phtml", ["message" => " Topic not found!"]);
             exit;
         }
 
@@ -69,10 +70,14 @@ class Topics extends \Suggestotron\Controller {
             header("location: /");
             exit;
         } else {
-            echo "An error occurred";
+            $this->render("errors/index.phtml", ["message" => "An error occurred!"]);
             exit;
         }
 
+    }
+    
+    public function aboutAction($options){
+        $this->render("index/about.phtml");
     }
 
 }

@@ -1,14 +1,22 @@
-<h2>New Topic</h2>
-<form action="/topics/add" method="POST">
-    <label>
-        Title: <input type="text" name="title">
-    </label>
-    <br>
-    <label>
-        Description:
-        <br>
-        <textarea name="description" cols="50" rows="20"></textarea>
-    </label>
-    <br>
-    <input type="submit" value="Add Topic" class="btn btn-primary">
-</form>
+<div class="container">
+    <div class="jumbotron well">
+        <h2>New Topic</h2>
+        <form action="/topic/add" method="POST">
+            <span class="rowMargin">
+                <label class="labelLength" for="title" title="Title">
+                    Title:
+                </label>
+                <input id="title" type="text" name="title" size="51">
+            </span>
+            <br>
+            <span class="rowMargin">
+                <label class="labelLength" for="description">
+                    Description:
+                </label>
+                <textarea id="description" name="description" cols="50" rows="20"></textarea>
+            </span>
+            <br>
+            <input type="submit" value="Add Topic" class="btn btn-primary">
+        </form>
+    </div>
+</div>
