@@ -15,6 +15,7 @@ class Router
                 $route = $this->config['default'];
             } else {
                 $this->error();
+                exit;
             }
         }
 
@@ -40,6 +41,7 @@ class Router
                             }
                         }
                     }
+                    
                     if (isset($options['controller']) && isset($options['action'])) {
                         $callable = [$options['controller'], $options['action'] . 'Action'];
                         if (is_callable($callable)) {

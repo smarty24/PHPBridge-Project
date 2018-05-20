@@ -16,4 +16,5 @@ class Controller {
     {
         $this->template->render($this->config['view_path'] . "/" . $template, $data);
     }
+    
 }

@@ -1,25 +1,26 @@
 <?php
-$topic = $this->topic;
+$topic = $this->topic;    
 ?>
 <div class="container">
-    <div class="jumbotron well">
+    <div class=" ">
         <h2>Edit Topic</h2>
         <form method="POST" action="/topic/edit">
             <span class="rowMargin">
                  <label class="labelLength" for="title">
                     Topic:
                 </label>
-                <input type="text" name="title" id="title" value="<?= $topic['title']; ?>" size="51">
+                <input class="inputFont" type="text" name="title" id="title" value="<?= $topic['title']; ?>" size="40">
             </span>
             <br>
             <span class="rowMargin">
                 <label class="labelLength" for="description">
                     Description:
                 </label>
-            <textarea name="description" id="description" cols="50" rows="20"><?= $topic['description']; ?></textarea>
+            <textarea class="inputFont" name="description" id="description" cols="40" rows="10"><?= $topic['description']; ?></textarea>
             </span>
             <br>
             <input name="id" type="hidden" value="<?= $topic['id']; ?> ">
+            <label class="labelLength"></label>
             <input type="submit" class="btn btn-primary" value="Edit">
         </form>
     </div>

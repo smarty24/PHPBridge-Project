@@ -19,7 +19,10 @@ class Topics extends \Suggestotron\Controller {
         if ( isset($_POST) && sizeof($_POST) > 0 )
         {
             $this->data->add($_POST);
-            header("location: /");
+            //header("location: /");
+            $topics = $this->data->getAllTopics();
+            $this->render("index/list.phtml", ['topics' => $topics, 'message' => 'Topic Added!']);
+            exit;
             exit;
         }
 
@@ -29,24 +32,25 @@ class Topics extends \Suggestotron\Controller {
     public function editAction($options) {
         if ( isset($_POST['id']) && !empty($_POST['id']) ) {
             if ( $this->data->update($_POST) ) {
-                header("location: /");
+                //header("location: /");
+                $topics = $this->data->getAllTopics();
+                $this->render("index/list.phtml", ['topics' => $topics, 'message' => 'Update successful']);
                 exit;
             } else {
-                //echo "An error occurred";
-                $this->render("errors/index.phtml", ["message" => "Update failed!"]);
+                $this->render("errors/topic.phtml", ["message" => "Update failed!"]);
                 exit;
             }
         }
 
         if ( !isset($options['id']) || empty($options['id']) ) {
-            $this->render("errors/index.phtml", ["message" => "No ID was found."]);
+            $this->render("errors/topic.phtml", ["message" => "No ID was found!"]);
             exit;
         }
 
         $topic = $this->data->getTopic($options['id']);
 
         if ( $topic === false ){
-            $this->render("errors/index.phtml", ["message" => "Topic not found"]);
+            $this->render("errors/topic.phtml", ["message" => "Topic not found"]);
             exit;
         }
 
@@ -55,14 +59,14 @@ class Topics extends \Suggestotron\Controller {
 
     public function deleteAction($options) {
         if ( !isset($options['id']) || empty($options['id']) ) {
-            $this->render("errors/index.phtml", ["message" => "No ID was found!"]);
+            $this->render("errors/topic.phtml", ["message" => "No ID was found!"]);
             exit;
         }
 
         $topic = $this->data->getTopic($options['id']);
 
         if ( $topic === false ){
-            $this->render("errors/index.phtml", ["message" => " Topic not found!"]);
+            $this->render("errors/topic.phtml", ["message" => " Topic not found!"]);
             exit;
         }
 
@@ -70,7 +74,7 @@ class Topics extends \Suggestotron\Controller {
             header("location: /");
             exit;
         } else {
-            $this->render("errors/index.phtml", ["message" => "An error occurred!"]);
+            $this->render("errors/topic.phtml", ["message" => "An error occurred!"]);
             exit;
         }
 
