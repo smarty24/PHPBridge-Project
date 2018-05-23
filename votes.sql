@@ -9,5 +9,6 @@ CREATE TABLE votes (
 
 INSERT INTO votes (
     topic_id,
-    count
+    count,
+    count_down
 ) SELECT id, 0 FROM topics;
