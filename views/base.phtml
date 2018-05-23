@@ -8,39 +8,44 @@
     <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
     <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<!--    <script type="text/javascript" src="../js/bootstrap.js"></script>-->
     <script type="text/javascript" src="/js/jquery-2.1.0.min.js"></script>
 
 </head>
 <body onload="showMessage();">
-<nav class="navbar navbar-default alert alert-success" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
-        <div class="row ">
-            <div class="col-xs-10">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="/">Suggestotron</a>
+        <div class="container">
+            <div class="row ">
+                <div class="col-xs-8">
+                    <div class="navbar-header">
+                        <a class="navbar-brand alart alert-success" href="/">Suggestotron</a>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <form class="navbar-form navbar-right" role="search">
+                        <a href="/topic/add" class="btn btn-default ">
+                            <span class="glyphicon glyphicon-plus-sign"></span>
+                            Add Topic
+                        </a>
+                    </form>
                 </div>
             </div>
-            <div class="col-xs-2">
-                <form navbar-form navbar-right role="search">
-                    <a href="/topic/add" class="btn btn-default">
-                        <span class="glyphicon glyphicon-plus-sign"></span>
-                        Add Topic
-                    </a>
-                </form>
-            </div>
-        </div>
+        </div>  
     </div>
 </nav>
 
-<div class="container">
+<div class="container ">
 <!--    Specific page content goes here-->
     <?php $this->content(); ?>
+    <hr>
 </div>
 <footer class="footer">
     <div class="container text-center">
-        <p>All right reserved, Kelechi &copy <?= date("Y") ?></p>
+        <span class="text-muted">All right reserved, Kelechi WebDesign &copy <?= date("Y") ?></span>
     </div>
 </footer>
+<!--JavaScript Code-->
 <script type="text/javascript">
     function showMessage() {
     // Get the snackbar DIV
@@ -52,7 +57,9 @@
     // After 5 seconds, remove the show class from DIV
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
 }
-    $('[data-toggle="popover"]').popover();
+    $(document).ready(function(){
+    $('[data-toggle="popover"]').popover();   
+});
 </script>
 </body>
 </html>

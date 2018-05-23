@@ -5,7 +5,7 @@ class Topics {
 
     public function getAllTopics() {
         $sql = "SELECT topics.*, 
-                          votes.count
+                          votes.count, votes.count_down
                     FROM topics INNER JOIN votes ON (
                          votes.topic_id = topics.id )
                     ORDER BY votes.count DESC, topics.title ASC";

@@ -14,13 +14,13 @@ class Votes extends \Suggestotron\Controller {
         header("Location: /");
     }
     
-    public function removeAction($options) {
+    public function downAction($options) {
         if(!isset($options['id']) || empty($options['id'])){
             echo "No topic id specified";
             exit;
         }
         $votes = new \Suggestotron\Model\Votes();
-        $votes->removeVote($options['id']);
+        $votes->downVote($options['id']);
         
         header("Location: /");
     }

@@ -19,10 +19,7 @@ class Topics extends \Suggestotron\Controller {
         if ( isset($_POST) && sizeof($_POST) > 0 )
         {
             $this->data->add($_POST);
-            //header("location: /");
-            $topics = $this->data->getAllTopics();
-            $this->render("index/list.phtml", ['topics' => $topics, 'message' => 'Topic Added!']);
-            exit;
+            header("location: /");
             exit;
         }
 
@@ -32,9 +29,7 @@ class Topics extends \Suggestotron\Controller {
     public function editAction($options) {
         if ( isset($_POST['id']) && !empty($_POST['id']) ) {
             if ( $this->data->update($_POST) ) {
-                //header("location: /");
-                $topics = $this->data->getAllTopics();
-                $this->render("index/list.phtml", ['topics' => $topics, 'message' => 'Update successful']);
+                header("location: /");
                 exit;
             } else {
                 $this->render("errors/topic.phtml", ["message" => "Update failed!"]);

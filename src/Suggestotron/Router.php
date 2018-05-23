@@ -41,7 +41,7 @@ class Router
                             }
                         }
                     }
-                    
+
                     if (isset($options['controller']) && isset($options['action'])) {
                         $callable = [$options['controller'], $options['action'] . 'Action'];
                         if (is_callable($callable)) {
@@ -67,7 +67,7 @@ class Router
             $route = $this->config['errors'];
             $this->start($route);
         } else {
-            echo "An unknown error occurred, please try again!";
+                echo "An unknown error occurred, please try again!";
         }
 
         exit;
