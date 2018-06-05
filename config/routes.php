@@ -2,13 +2,13 @@
 
 return [
     'default' => '/topic/list',
-    'errors' => '/error/:code',
+    'errors' => '/errors/:code',
     'routes' => [
         '/topic(/:action(/:id))' => [
             'controller' => '\Suggestotron\Controller\Topics',
             'action' => 'list',
         ],
-        '/error(/:action(/:code))' => [
+        '/errors(/:code)' => [
             'controller' => '\Suggestotron\Controller\Errors',
             'action' => 'index',
         ],

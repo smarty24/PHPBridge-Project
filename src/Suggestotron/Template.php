@@ -24,4 +24,6 @@ class Template {
     {
         require $this->page;
     }
+
+
 }

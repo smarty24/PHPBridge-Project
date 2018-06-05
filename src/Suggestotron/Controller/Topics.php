@@ -1,5 +1,6 @@
 <?php
 namespace Suggestotron\Controller;
+session_start();
 
 class Topics extends \Suggestotron\Controller {
     protected $data;
@@ -10,15 +11,17 @@ class Topics extends \Suggestotron\Controller {
         $this->data = new \Suggestotron\Model\Topics();
     }
 
-    public function listAction($options) {
+    public function listAction($options)
+    {
         $topics = $this->data->getAllTopics();
         $this->render("index/list.phtml", ['topics' => $topics]);
     }
 
-    public function addAction($options) {
-        if ( isset($_POST) && sizeof($_POST) > 0 )
+    public function addAction($options)
+    {
+        if ( isset($_POST) && sizeof($_POST) > 0)
         {
-            $this->data->add($_POST);
+            $this->data->add($_POST);$_SESSION['success'] = "Topic added successfully.";
             header("location: /");
             exit;
         }
@@ -29,7 +32,8 @@ class Topics extends \Suggestotron\Controller {
     public function editAction($options) {
         if ( isset($_POST['id']) && !empty($_POST['id']) ) {
             if ( $this->data->update($_POST) ) {
-                header("location: /");
+                $_SESSION['success'] = "Topic changed successfully.";
+                header("Location: /");
                 exit;
             } else {
                 $this->render("errors/topic.phtml", ["message" => "Update failed!"]);
@@ -66,6 +70,7 @@ class Topics extends \Suggestotron\Controller {
         }
 
         if ( $this->data->delete($options['id']) ) {
+            $_SESSION['success'] = "Topic deleted successfully.";
             header("location: /");
             exit;
         } else {

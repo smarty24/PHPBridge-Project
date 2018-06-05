@@ -18,6 +18,7 @@ class Db {
         $config = \Suggestotron\Config::get('database');
 
         $this->connection = new \PDO("mysql:host=".$config['hostname']. ";dbname=" . $config['dbname'], $config['username'], $config['password']);
+        $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 
     public function getConnection()
