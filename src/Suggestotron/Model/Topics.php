@@ -8,7 +8,7 @@ class Topics {
                           votes.count, votes.count_down
                     FROM topics INNER JOIN votes ON (
                          votes.topic_id = topics.id )
-                    ORDER BY votes.count DESC, topics.title ASC";
+                    ORDER BY votes.count DESC, votes.count_down ASC, topics.title ASC";
 
         $query = \Suggestotron\Db::getInstance()->prepare($sql);
         $query->execute();

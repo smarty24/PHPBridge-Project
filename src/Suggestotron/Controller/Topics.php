@@ -21,9 +21,18 @@ class Topics extends \Suggestotron\Controller {
     {
         if ( isset($_POST) && sizeof($_POST) > 0)
         {
-            $this->data->add($_POST);$_SESSION['success'] = "Topic added successfully.";
-            header("location: /");
-            exit;
+            if ( empty($_POST['title']) || empty($_POST['description']) )
+            {
+                $_SESSION['error'] = "Fields must not be empty.";
+                header("Location: /topic/add/");
+                exit;
+            }
+            else {
+                $this->data->add($_POST);
+                $_SESSION['success'] = "Topic added successfully.";
+                header("location: /");
+                exit;
+            }
         }
 
         $this->render("index/add.phtml");
@@ -31,17 +40,22 @@ class Topics extends \Suggestotron\Controller {
 
     public function editAction($options) {
         if ( isset($_POST['id']) && !empty($_POST['id']) ) {
-            if ( $this->data->update($_POST) ) {
+            if ( empty($_POST['title'])  || empty($_POST['description']) )
+            {
+                $_SESSION['error'] = "Fields must not be empty.";
+                header("Location: /topic/edit/{$_POST['id']}");
+                exit;
+            }
+            else {
+                $this->data->update($_POST);
                 $_SESSION['success'] = "Topic changed successfully.";
                 header("Location: /");
-                exit;
-            } else {
-                $this->render("errors/topic.phtml", ["message" => "Update failed!"]);
                 exit;
             }
         }
 
         if ( !isset($options['id']) || empty($options['id']) ) {
+            header("HTTP/1.0 404 Not Found");
             $this->render("errors/topic.phtml", ["message" => "No ID was found!"]);
             exit;
         }
@@ -49,6 +63,7 @@ class Topics extends \Suggestotron\Controller {
         $topic = $this->data->getTopic($options['id']);
 
         if ( $topic === false ){
+            header("HTTP/1.0 404 Not Found");
             $this->render("errors/topic.phtml", ["message" => "Topic not found"]);
             exit;
         }

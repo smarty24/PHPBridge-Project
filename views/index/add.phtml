@@ -1,4 +1,5 @@
 <div class="container">
+
     <div class=" ">
         <h3>New Topic</h3>
         <form action="/topic/add" method="POST">
@@ -16,7 +17,12 @@
                 <textarea class=inputFont id="description" name="description" cols="41" rows="10"></textarea>
             </span>
             <br>
-            <label class="labelLength"></label><input type="submit" value="Add Topic" class="btn btn-primary">
+            <label class="labelLength"></label>
+            <button type="submit" class="btn btn-primary">
+                <span class="glyphicon glyphicon-plus-sign"></span>
+                Add Topic
+            </button>
+
         </form>
     </div>
 </div>
