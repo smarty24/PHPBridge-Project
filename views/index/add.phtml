@@ -1,3 +1,8 @@
+<?php
+
+    $title = $_SESSION['title']? $_SESSION['title'] : false;
+    $description = $_SESSION['description']? $_SESSION['description'] : false;
+?>
 <div class="container">
 
     <div class=" ">
@@ -7,14 +12,14 @@
                 <label class="labelLength" for="title" title="Title">
                     Title:
                 </label>
-                <input class=inputFont id="title" type="text" name="title" size="41">
+                <input class=inputFont id="title" type="text" name="title" size="41" value="<?= htmlentities($title); ?>">
             </span>
             <br>
             <span class="rowMargin">
                 <label class="labelLength" for="description">
                     Description:
                 </label>
-                <textarea class=inputFont id="description" name="description" cols="41" rows="10"></textarea>
+                <textarea class=inputFont id="description" name="description" cols="41" rows="10" ><?= htmlentities($description); ?></textarea>
             </span>
             <br>
             <label class="labelLength"></label>

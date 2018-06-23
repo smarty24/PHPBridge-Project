@@ -23,12 +23,19 @@ class Topics extends \Suggestotron\Controller {
         {
             if ( empty($_POST['title']) || empty($_POST['description']) )
             {
-                $_SESSION['error'] = "Fields must not be empty.";
-                header("Location: /topic/add/");
+
+                $_SESSION['error'] = "Fields must not be empty."; //add error messages to session variables
+                $_SESSION['title'] = $_POST['title'];
+                $_SESSION['description'] = $_POST['description'];
+                header("Location: /topic/add/"); //redirect back to the same page
                 exit;
             }
             else {
                 $this->data->add($_POST);
+                //unset flash message for title and description
+                unset($_SESSION['title']);
+                unset($_SESSION['description']);
+                //set flash message for successful added topic
                 $_SESSION['success'] = "Topic added successfully.";
                 header("location: /");
                 exit;
