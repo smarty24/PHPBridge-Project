@@ -21,20 +21,25 @@ class Topics extends \Suggestotron\Controller {
     {
         if ( isset($_POST) && sizeof($_POST) > 0)
         {
-            if ( empty($_POST['title']) || empty($_POST['description']) )
+            if ( empty($_POST['title']) )
             {
-
-                $_SESSION['error'] = "Fields must not be empty."; //add error messages to session variables
+                $_SESSION['error'] = "Title field must not be blank."; //add error messages to session variables
                 $_SESSION['title'] = $_POST['title'];
                 $_SESSION['description'] = $_POST['description'];
                 header("Location: /topic/add/"); //redirect back to the same page
                 exit;
             }
-            else {
+            else if ( empty($_POST['description']) )
+            {
+                $_SESSION['error'] = "Description field must not be blank."; //add error messages to session variables
+                $_SESSION['title'] = $_POST['title'];
+                $_SESSION['description'] = $_POST['description'];
+                header("Location: /topic/add/"); //redirect back to the same page
+                exit;
+            }
+            else
+            {
                 $this->data->add($_POST);
-                //unset flash message for title and description
-                unset($_SESSION['title']);
-                unset($_SESSION['description']);
                 //set flash message for successful added topic
                 $_SESSION['success'] = "Topic added successfully.";
                 header("location: /");
@@ -61,9 +66,10 @@ class Topics extends \Suggestotron\Controller {
             }
         }
 
-        if ( !isset($options['id']) || empty($options['id']) ) {
+        if ( !isset($options['id']) || empty($options['id']) )
+        {
             header("HTTP/1.0 404 Not Found");
-            $this->render("errors/topic.phtml", ["message" => "No ID was found!"]);
+            $this->render("errors/topic.phtml", ["message" => "ID was not found!"]);
             exit;
         }
 

@@ -10,14 +10,14 @@ $topic = $this->topic;
                  <label class="labelLength" for="title">
                     Topic:
                 </label>
-                <input class="inputFont" type="text" name="title" id="title" value="<?= $topic['title']; ?>" size="40">
+                <input class="inputFont" type="text" name="title" id="title" value="<?= htmlentities($topic['title']); ?>" size="41">
             </span>
             <br>
             <span class="rowMargin">
                 <label class="labelLength" for="description">
                     Description:
                 </label>
-            <textarea class="inputFont" name="description" id="description" cols="40" rows="10"><?= $topic['description']; ?></textarea>
+            <textarea class="inputFont" name="description" id="description" cols="40" rows="10"><?= htmlentities($topic['description']); ?></textarea>
             </span>
             <br>
             <input name="id" type="hidden" value="<?= $topic['id']; ?> ">
